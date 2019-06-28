@@ -7,12 +7,16 @@
         <variable
             name="sleep"
             type="com.example.android.trackmysleepquality.database.SleepNight" />
+        <variable
+            name="clickListener"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepNightListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(sleep)}">
 
         <ImageView
             android:id="@+id/img_quality"
@@ -28,30 +32,15 @@
             app:sleepImage="@{sleep}"/>
 
         <TextView
-            android:id="@+id/tv_sleep_length"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_quality"
-            app:layout_constraintTop_toTopOf="@+id/img_quality"
-            tools:text="Wednesday"
-            app:sleepDurationFormatted="@{sleep}"/>
-
-        <TextView
             android:id="@+id/tv_quality_string"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            tools:text="Excelent!!!"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_quality"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sleep_length"
-            app:sleepQualityString="@{sleep}"/>
+            app:layout_constraintEnd_toEndOf="@+id/img_quality"
+            app:layout_constraintStart_toStartOf="@+id/img_quality"
+            app:layout_constraintTop_toBottomOf="@+id/img_quality"
+            app:sleepQualityString="@{sleep}"
+            tools:text="Excelent!!!"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
